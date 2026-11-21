@@ -1,41 +1,43 @@
 # Qriant
 
-**A quiet QR toolkit for Android.** Scan and create QR codes without ads, accounts, analytics, subscriptions, or unnecessary permissions.
+A simple, private and open-source QR code utility for Android.
 
-> Project status: early prototype (0.1.0). Not yet release-ready.
+## Features
 
-## Current prototype
-- Live QR/barcode scanning using CameraX + bundled ML Kit.
-- QR generation on-device using ZXing.
-- Copy scan results and generated content.
-- Dark interface with a small, focused feature set.
-- No `INTERNET` permission in the manifest.
-
-## Planned
-- Persistent local scan history and favorites.
-- Scan QR codes from images.
-- Dedicated Wi-Fi, contact, email, phone and event templates.
-- Safe URL preview (show the full host before opening; never auto-open).
-- Export generated QR images.
-- Accessibility and Portuguese/English localization.
-- Automated tests and reproducible release builds.
-
-## Build
-Open the project in Android Studio, or use a local Gradle 8.9 installation:
-
-```bash
-gradle assembleDebug
-```
-
-Requirements:
-- JDK 17
-- Android SDK Platform 35
-- Android Gradle Plugin 8.7.3
-
-The first Gradle sync requires internet to download build dependencies. The app itself does not need network access to scan or generate codes.
+- Scan QR codes using your camera.
+- Generate QR codes from text.
+- Lightweight and straightforward interface.
+- No accounts, advertisements or analytics.
 
 ## Privacy
-The prototype requests camera permission only when scanning. QR decoding and generation are performed on-device. There is no analytics, advertising SDK, account system, or network permission.
+
+Qriant uses camera access to scan QR codes.
+The project aims to avoid unnecessary data collection.
+
+## Built with
+
+- Kotlin
+- Jetpack Compose
+- CameraX
+- Google ML Kit
+- ZXing
+
+## Building
+
+Requirements: JDK 17, Android SDK 35 and Gradle 8.9.
+
+Run:
+
+    gradle assembleDebug
+
+The APK will be generated at:
+
+    app/build/outputs/apk/debug/app-debug.apk
+
+## Status
+
+Qriant is an early-stage project.
 
 ## License
-MIT. See [LICENSE](LICENSE).
+
+See LICENSE.
