@@ -119,6 +119,9 @@ private fun QriantApp() {
                             }
                         }
                     }
+                    Spacer(Modifier.height(12.dp))
+                    GalleryQrPicker(onResult = { scanned = it })
+
                     if (scanned.isNotBlank()) {
                         Spacer(Modifier.height(14.dp))
                         ResultCard(scanned)
