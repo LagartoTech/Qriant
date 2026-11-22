@@ -1,32 +1,81 @@
 # Qriant
 
-A simple, private and open-source QR code utility for Android.
+**Um utilitário de QR Code simples e direto para Android.**
+**A simple, straightforward QR code utility for Android.**
 
-## Features
+[Português](#português) | [English](#english)
 
-- Scan QR codes using your camera.
-- Generate QR codes from text.
-- Lightweight and straightforward interface.
-- No accounts, advertisements or analytics.
+---
 
-## Privacy
+## Português
 
-Qriant uses camera access to scan QR codes.
-The project aims to avoid unnecessary data collection.
+O Qriant é um aplicativo Android de código aberto para ler e gerar códigos QR, com foco em simplicidade e funcionamento local.
 
-## Built with
+### Recursos atuais
+
+- Leitura de códigos QR usando a câmera.
+- Geração de códigos QR a partir de texto ou links.
+- Cópia do conteúdo lido ou gerado.
+- Interface simples e sem anúncios.
+
+### Estado do projeto
+
+O Qriant está em desenvolvimento inicial. Algumas funções planejadas, como leitura de imagens da galeria e exportação de QR Codes como imagem, ainda não estão disponíveis.
+
+### Tecnologias
 
 - Kotlin
 - Jetpack Compose
-- CameraX
-- Google ML Kit
+- AndroidX CameraX
+- Google ML Kit Barcode Scanning
 - ZXing
 
-## Building
+### Compilação
+
+Requisitos: JDK 17, Android SDK 35 e Gradle 8.9.
+
+Na raiz do projeto, execute:
+
+    gradle assembleDebug
+
+O APK será gerado em:
+
+    app/build/outputs/apk/debug/app-debug.apk
+
+### Licença
+
+Distribuído sob a licença MIT. Consulte [LICENSE](LICENSE).
+
+---
+
+## English
+
+Qriant is an open-source Android application for scanning and generating QR codes, designed around simplicity and on-device operation.
+
+### Current features
+
+- Scan QR codes using the camera.
+- Generate QR codes from text or links.
+- Copy scanned or generated content.
+- Simple, ad-free interface.
+
+### Project status
+
+Qriant is in early development. Planned features such as scanning images from the gallery and exporting QR codes as image files are not available yet.
+
+### Built with
+
+- Kotlin
+- Jetpack Compose
+- AndroidX CameraX
+- Google ML Kit Barcode Scanning
+- ZXing
+
+### Building
 
 Requirements: JDK 17, Android SDK 35 and Gradle 8.9.
 
-Run:
+From the project root, run:
 
     gradle assembleDebug
 
@@ -34,10 +83,6 @@ The APK will be generated at:
 
     app/build/outputs/apk/debug/app-debug.apk
 
-## Status
+### License
 
-Qriant is an early-stage project.
-
-## License
-
-See LICENSE.
+Released under the MIT License. See [LICENSE](LICENSE).
