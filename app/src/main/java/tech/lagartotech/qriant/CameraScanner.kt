@@ -26,7 +26,7 @@ import com.google.mlkit.vision.common.InputImage
 import java.util.concurrent.Executors
 
 @Composable
-fun CameraScanner(modifier: Modifier = Modifier, onResult: (String) -> Unit) {
+fun CameraScanner(modifier: Modifier = Modifier, onResult: (ScannedCode?) -> Unit) {
     val context = LocalContext.current
     val lifecycleOwner = LocalLifecycleOwner.current
     val previewView = remember { PreviewView(context) }
@@ -51,7 +51,11 @@ fun CameraScanner(modifier: Modifier = Modifier, onResult: (String) -> Unit) {
                     val image = InputImage.fromMediaImage(mediaImage, proxy.imageInfo.rotationDegrees)
                     scanner.process(image)
                         .addOnSuccessListener { codes ->
-                            codes.firstOrNull()?.rawValue?.let(onResult)
+                            codes.firstOrNull { !it.rawValue.isNullOrBlank() }?.let { code ->
+                                code.rawValue?.let { value ->
+                                    onResult(ScannedCode(value, code.format))
+                                }
+                            }
                         }
                         .addOnCompleteListener { proxy.close() }
                 }

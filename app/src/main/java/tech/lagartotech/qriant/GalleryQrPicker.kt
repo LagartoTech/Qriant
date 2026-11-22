@@ -25,7 +25,7 @@ import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.common.InputImage
 
 @Composable
-fun GalleryQrPicker(onResult: (String) -> Unit) {
+fun GalleryQrPicker(onResult: (ScannedCode?) -> Unit) {
     val context = LocalContext.current
     val scanner = remember { BarcodeScanning.getClient() }
     var status by remember { mutableStateOf("") }
@@ -34,18 +34,19 @@ fun GalleryQrPicker(onResult: (String) -> Unit) {
         contract = ActivityResultContracts.GetContent()
     ) { uri ->
         if (uri != null) {
-            onResult("")
+            onResult(null)
             status = "Reading image..."
             try {
                 val image = InputImage.fromFilePath(context, uri)
                 scanner.process(image)
                     .addOnSuccessListener { codes ->
-                        val value = codes.firstOrNull()?.rawValue
-                        if (value != null) {
-                            status = "QR code found"
-                            onResult(value)
+                        val code = codes.firstOrNull { !it.rawValue.isNullOrBlank() }
+                        val value = code?.rawValue
+                        if (code != null && value != null) {
+                            status = "Code found"
+                            onResult(ScannedCode(value, code.format))
                         } else {
-                            status = "No QR code found in this image"
+                            status = "No supported code found in this image"
                         }
                     }
                     .addOnFailureListener {

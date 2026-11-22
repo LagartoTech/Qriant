@@ -1,7 +1,7 @@
 # Qriant
 
-**Um utilitário de QR Code simples e direto para Android.**
-**A simple, straightforward QR code utility for Android.**
+**Um utilitário Android simples e direto para ler códigos QR e códigos de barras.**
+**A simple, straightforward Android utility for scanning QR codes and barcodes.**
 
 [Português](#português) | [English](#english)
 
@@ -9,18 +9,19 @@
 
 ## Português
 
-O Qriant é um aplicativo Android de código aberto para ler e gerar códigos QR, com foco em simplicidade e funcionamento local.
+O Qriant é um aplicativo Android de código aberto para leitura de códigos QR e códigos de barras em diversos formatos, além da geração de códigos QR. Foi desenvolvido com foco em simplicidade e funcionamento local.
 
-### Recursos atuais
+### Recursos
 
 - Leitura de códigos QR usando a câmera.
-- Geração de códigos QR a partir de texto ou links.
+- Leitura de códigos QR e códigos de barras a partir da galeria.
+- Suporte aos formatos reconhecidos pelo Google ML Kit, incluindo QR Code, EAN-8, EAN-13, UPC-A, UPC-E, Code 128, Code 39, PDF417, Data Matrix e Aztec.
+- Geração de códigos QR a partir de textos ou links.
 - Cópia do conteúdo lido ou gerado.
+- Abertura de links detectados.
+- Salvamento de códigos QR como imagens PNG.
+- Compartilhamento de imagens geradas.
 - Interface simples e sem anúncios.
-
-### Estado do projeto
-
-O Qriant está em desenvolvimento inicial. Algumas funções planejadas, como leitura de imagens da galeria e exportação de QR Codes como imagem, ainda não estão disponíveis.
 
 ### Tecnologias
 
@@ -50,18 +51,19 @@ Distribuído sob a licença MIT. Consulte [LICENSE](LICENSE).
 
 ## English
 
-Qriant is an open-source Android application for scanning and generating QR codes, designed around simplicity and on-device operation.
+Qriant is an open-source Android application for scanning QR codes and barcodes in multiple formats, as well as generating QR codes. It is designed around simplicity and on-device operation.
 
-### Current features
+### Features
 
 - Scan QR codes using the camera.
+- Scan QR codes and barcodes from gallery images.
+- Supports formats recognized by Google ML Kit, including QR Code, EAN-8, EAN-13, UPC-A, UPC-E, Code 128, Code 39, PDF417, Data Matrix and Aztec.
 - Generate QR codes from text or links.
 - Copy scanned or generated content.
+- Open detected links.
+- Save generated QR codes as PNG images.
+- Share generated images.
 - Simple, ad-free interface.
-
-### Project status
-
-Qriant is in early development. Planned features such as scanning images from the gallery and exporting QR codes as image files are not available yet.
 
 ### Built with
 
