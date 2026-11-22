@@ -34,6 +34,7 @@ fun GalleryQrPicker(onResult: (String) -> Unit) {
         contract = ActivityResultContracts.GetContent()
     ) { uri ->
         if (uri != null) {
+            onResult("")
             status = "Reading image..."
             try {
                 val image = InputImage.fromFilePath(context, uri)
