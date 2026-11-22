@@ -3,6 +3,8 @@ package tech.lagartotech.qriant
 import android.Manifest
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -187,16 +189,33 @@ private fun QriantApp() {
 @Composable
 private fun ResultCard(value: String) {
     val clipboard = LocalClipboardManager.current
+    val context = LocalContext.current
+    val uri = Uri.parse(value)
+    val isWebLink = (uri.scheme == "http" || uri.scheme == "https") &&
+        !uri.host.isNullOrBlank()
+
     Card(colors = CardDefaults.cardColors(containerColor = Panel)) {
         Column(Modifier.fillMaxWidth().padding(16.dp)) {
             Text("SCAN RESULT", color = Accent, style = MaterialTheme.typography.labelSmall)
             Spacer(Modifier.height(6.dp))
             Text(value, color = Color.White)
             Spacer(Modifier.height(8.dp))
-            TextButton(onClick = { clipboard.setText(AnnotatedString(value)) }) {
-                Icon(Icons.Default.ContentCopy, null)
-                Spacer(Modifier.width(6.dp))
-                Text("Copy")
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                TextButton(onClick = { clipboard.setText(AnnotatedString(value)) }) {
+                    Icon(Icons.Default.ContentCopy, null)
+                    Spacer(Modifier.width(6.dp))
+                    Text("Copy")
+                }
+                if (isWebLink) {
+                    TextButton(onClick = {
+                        try {
+                            context.startActivity(Intent(Intent.ACTION_VIEW, uri))
+                        } catch (_: Exception) {
+                        }
+                    }) {
+                        Text("Open link")
+                    }
+                }
             }
         }
     }
